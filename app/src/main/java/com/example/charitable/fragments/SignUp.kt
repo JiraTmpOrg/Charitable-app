@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.charitable.R
+import com.example.charitable.database.DatabaseManager
 import java.util.*
 
 class SignUp : Fragment() {
@@ -31,7 +32,7 @@ class SignUp : Fragment() {
 
         val userName = requireView().findViewById<EditText>(R.id.nameField)
         val password = requireView().findViewById<EditText>(R.id.editTextTextPassword2)
-
+        val db= DatabaseManager()
         val usersSharedPreferences =
             requireContext().getSharedPreferences(
                 "com.example.charitable.users",
@@ -46,48 +47,18 @@ class SignUp : Fragment() {
         signUp.setOnClickListener {
             val name = userName.text.toString()
             val pass = password.text.toString()
-            var available = true
-            var savedString: String = usersSharedPreferences.getString("string", "").toString()
-            var st = StringTokenizer(savedString, ",")
-            var names = mutableListOf<String>()
-            while (st.hasMoreTokens()) {
-                names.add(st.nextToken())
-            }
-            names.forEach {
-                if (name == it) {
-                    Toast.makeText(view.context, "Username Taken", Toast.LENGTH_SHORT).show()
-                    available = false
-                }
+            if(db.insertName(name))
+            {val myToast = Toast.makeText(context,"User Added Successfully",Toast.LENGTH_SHORT)
+            myToast.show()}
+            else
+            {
+                val myToast = Toast.makeText(context,"User Already exists",Toast.LENGTH_SHORT)
+                myToast.show()
             }
 
-            savedString = adminsSharedPreferences.getString("string", "").toString()
-            st = StringTokenizer(savedString, ",")
-            names = mutableListOf<String>()
-            while (st.hasMoreTokens()) {
-                names.add(st.nextToken())
-            }
-            names.forEach {
-                if (name == it) {
-                    Toast.makeText(view.context, "Username Taken", Toast.LENGTH_SHORT).show()
-                    available = false
-                }
-
-            }
-            if(available){
-
-                names.add(name)
-
-                val str = StringBuilder()
-
-                names.forEach { str.append(it).append(",") }
-
-                usersSharedPreferences.edit().putString("string",str.toString()).apply()
-
-            }
-        }
 
     }
 
 
-}
+}}
 
