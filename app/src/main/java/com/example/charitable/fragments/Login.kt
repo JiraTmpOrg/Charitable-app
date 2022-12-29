@@ -2,6 +2,7 @@ package com.example.charitable.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.Toast
 import com.example.charitable.R
 import com.example.charitable.database.DatabaseManager
 import java.util.*
+import kotlin.concurrent.schedule
 
 class Login : Fragment() {
 
@@ -30,9 +32,9 @@ class Login : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         signIn = view.findViewById(R.id.startButton)
         signUp = view.findViewById(R.id.registerButton)
-
-        DatabaseManager().connect()
-        DatabaseManager().c2()
+        val db=DatabaseManager()
+        //DatabaseManager().connect()
+        //DatabaseManager().c2()
 
 
         val userName = requireView().findViewById<EditText>(R.id.nameField)
@@ -54,41 +56,33 @@ class Login : Fragment() {
 
 
         signIn.setOnClickListener {
+
+            //db.connect()
             val name = userName.text.toString()
-            val pass = password.text.toString()
-            var savedString: String = usersSharedPreferences.getString("string", "").toString()
-            var st = StringTokenizer(savedString, ",")
-            var names = mutableListOf<String>()
-            while (st.hasMoreTokens()) {
-                names.add(st.nextToken())
+            if (db.checkName(name))
+            {
+                val myToast = Toast.makeText(context,"User Found",Toast.LENGTH_SHORT)
+                myToast.show()
             }
-            names.forEach {
-                if (name == it) {
+            else
+            {val myToast = Toast.makeText(context,"User Nooot Found ${db.checkName(name)}",Toast.LENGTH_SHORT)
+                myToast.show()}
+            val pass = password.text.toString()
+                if (name!="Admin"&&db.checkName(name)) {
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(1))
                             addToBackStack(null)
                             commit()
                         }
                     }
-
-                }
-
-
-            savedString = adminsSharedPreferences.getString("string", "").toString()
-            st = StringTokenizer(savedString, ",")
-            names = mutableListOf<String>()
-            while (st.hasMoreTokens()) {
-                names.add(st.nextToken())
-            }
-            names.forEach {
-                if (name == it) {
+                else if (db.checkName(name)) {
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(0))
                             addToBackStack(null)
                             commit()
                         }
 
-                }
+
             }
 
         }
