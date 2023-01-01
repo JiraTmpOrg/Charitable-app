@@ -1,8 +1,6 @@
-package com.example.charitable.fragments
+package Control
 
-import android.content.Context
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.charitable.R
-import com.example.charitable.database.DatabaseManager
-import java.util.*
-import kotlin.concurrent.schedule
+import Model.database.DatabaseManager
 
 class Login : Fragment() {
 
@@ -22,6 +18,7 @@ class Login : Fragment() {
      companion object {
         var uid = 0
     }
+
 
 public fun getLoginID():Int
 {
@@ -39,10 +36,12 @@ public fun getLoginID():Int
         super.onViewCreated(view, savedInstanceState)
         signIn = view.findViewById(R.id.startButton)
         signUp = view.findViewById(R.id.registerButton)
-        val db=DatabaseManager()
-        //DatabaseManager().connect()
-        //DatabaseManager().c2()
-        println(R.color.black)
+        val db= DatabaseManager.db
+        fun showMessage(message:String)
+        {
+            val myToast = Toast.makeText(context,message,Toast.LENGTH_SHORT)
+            myToast.show()
+        }
 
 
         val userName = requireView().findViewById<EditText>(R.id.nameField)
@@ -53,31 +52,26 @@ public fun getLoginID():Int
             //db.connect()
             val name = userName.text.toString()
             val pass=password.text.toString()
-            if (db.checkName(name,pass))
-            {
-                val myToast = Toast.makeText(context,"User Found",Toast.LENGTH_SHORT)
-                myToast.show()
-            }
-            else
-            {val myToast = Toast.makeText(context,"User Nooot Found ${db.checkName(name,pass)}",Toast.LENGTH_SHORT)
-                myToast.show()}
-                if (name!="Admin"&&db.checkName(name,pass)) {
-                    uid=db.getID(name)
+                if (db.checkName(name,pass)==1) {
+                    showMessage("Welcome ${name}")
+                    uid =db.getID(name)
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(1))
                             addToBackStack(null)
                             commit()
                         }
                     }
-                else if (db.checkName(name,pass)) {
-                    //db.getID(name)
+                else if (db.checkName(name,pass)==2) {
+                    showMessage("Welcome Model.Admin")
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(0))
                             addToBackStack(null)
                             commit()
                         }
-
-
+            }
+            else
+            {
+                showMessage("Username or Password is Incorrect !")
             }
 
         }

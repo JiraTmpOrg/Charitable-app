@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.HomeScreen">
+    tools:context="Control.HomeScreen">
 
 
 
@@ -58,7 +58,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="0dp"
-        android:src="@drawable/ic_baseline_house_24"
+        android:src="@drawable/ic_baseline_receipt_long_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/donateBtn" />
@@ -96,7 +96,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Establishments"
+        android:text="Donations History"
         app:layout_constraintEnd_toEndOf="@+id/estBtn"
         app:layout_constraintStart_toStartOf="@+id/estBtn"
         app:layout_constraintTop_toBottomOf="@+id/estBtn" />
@@ -111,14 +111,17 @@
         app:layout_constraintTop_toBottomOf="@+id/callBtn" />
 
     <TextView
+        android:background="#80FFFFFF"
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Available Activity"
-        android:textColor="#000"
+        android:text="New Activities"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

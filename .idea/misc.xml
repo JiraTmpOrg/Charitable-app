@@ -32,12 +32,16 @@
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_needs.xml" value="0.13903985507246377" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_receipt.xml" value="0.13903985507246377" />
-        <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_sign_up.xml" value="0.13903985507246377" />
+        <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_recycler_view.xml" value="0.18125" />
+        <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_recyclerview.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_sign_up.xml" value="0.234375" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_slider.xml" value="0.25" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/fragment_user_donation.xml" value="0.25" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/item_esr.xml" value="0.13903985507246377" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/item_receipt.xml" value="0.13903985507246377" />
         <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/item_slider.xml" value="0.13903985507246377" />
+        <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/list_adapter.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/moham/Downloads/Compressed/Charitable-app-master_2/Charitable-app-master/app/src/main/res/layout/list_item.xml" value="0.18020833333333333" />
       </map>
     </option>
   </component>

@@ -1,4 +1,4 @@
-package com.example.charitable.fragments
+package Control
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

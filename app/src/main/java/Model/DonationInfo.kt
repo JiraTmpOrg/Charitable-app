@@ -1,3 +1,5 @@
+package Model
+
 import java.util.Date
 
 class DonationInfo(donerName:String, email:String, phoneNumber:String, amount:Int, paymentType:String, date:Date)

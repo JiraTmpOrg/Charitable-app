@@ -1,4 +1,4 @@
-package com.example.charitable.fragments
+package Control
 
 import android.content.Intent
 import android.net.Uri
@@ -50,9 +50,9 @@ class HomeScreen(acc:Int) : Fragment() {
         imageSlider=requireView().findViewById(R.id.imageSlider)
         val imageList=ArrayList<SlideModel>()
         imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
-        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
-        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
-        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
+        imageList.add(SlideModel("https://m.al-sharq.com/get/maximage/20190103_1546464933-724055.jpeg?t=1552850498"))
+        imageList.add(SlideModel("https://cdn.al-ain.com/images/2019/4/01/133-004947-campaign-charity-sharjah-watering_700x400.png"))
+        imageList.add(SlideModel("https://www.almrsal.com/wp-content/uploads/2017/12/%D8%A7%D9%84%D8%AA%D8%A8%D8%B1%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%D9%8A%D8%A9.jpg"))
         imageSlider.setImageList(imageList,ScaleTypes.FIT)
 
 
@@ -114,7 +114,7 @@ class HomeScreen(acc:Int) : Fragment() {
     fun initDoner() {
         donate.setImageResource(R.drawable.ic_baseline_attach_money_24)
         participate.setImageResource(R.drawable.ic_baseline_query_builder_24)
-        establishment.setImageResource(R.drawable.ic_baseline_house_24)
+        establishment.setImageResource(R.drawable.ic_baseline_receipt_long_24)
         callUs.setImageResource(R.drawable.ic_baseline_local_phone_24)
 
         donate.setOnClickListener {
@@ -133,7 +133,7 @@ class HomeScreen(acc:Int) : Fragment() {
         }
         establishment.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, Establishments())
+                replace(R.id.flFragment, userDonation())
                 addToBackStack(null)
                 commit()
             }
@@ -141,7 +141,7 @@ class HomeScreen(acc:Int) : Fragment() {
         }
 
         callUs.setOnClickListener {
-            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode("01027126084")))
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode(resources.getString(R.string.charityNumber))))
             startActivity(intent)
 //            parentFragmentManager.beginTransaction().apply {
 //                replace(R.id.flFragment, UserDonation())

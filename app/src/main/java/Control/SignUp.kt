@@ -1,6 +1,5 @@
-package com.example.charitable.fragments
+package Control
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,8 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.charitable.R
-import com.example.charitable.database.DatabaseManager
-import java.util.*
+import Model.database.DatabaseManager
 
 class SignUp : Fragment() {
 
@@ -34,7 +32,7 @@ class SignUp : Fragment() {
         val password = requireView().findViewById<EditText>(R.id.password)
         val confirmPassword=requireView().findViewById<EditText>(R.id.confirmPassword)
         val email = requireView().findViewById<EditText>(R.id.email)
-        val db= DatabaseManager()
+        val db= DatabaseManager.db
 
 
         signUp.setOnClickListener {

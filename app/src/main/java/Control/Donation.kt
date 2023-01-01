@@ -1,6 +1,5 @@
-package com.example.charitable.fragments
+package Control
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.charitable.R
-import com.example.charitable.database.DatabaseManager
+import Model.database.DatabaseManager
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class Donation : Fragment() {
     lateinit var donate: Button
@@ -25,7 +23,7 @@ class Donation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         donate = view.findViewById(R.id.button)
-        val db= DatabaseManager()
+        val db= DatabaseManager.db
         //DatabaseManager().connect()
         //DatabaseManager().c2()
         val paymentDropDownMen=requireView().findViewById<AutoCompleteTextView>(R.id.paymemts)
@@ -42,7 +40,7 @@ class Donation : Fragment() {
                donate.setOnClickListener {
             //db.connect()
                    db.insertDonation(donerName.text.toString(),email.text.toString(),phone.text.toString(),amount.text.toString(),paymentDropDownMen.text.toString())
-            val myToast = Toast.makeText(context,"Added: ${Login.uid}: ${donerName.text}:${email.text}ph:${phone.text}am:${amount.text}typ:${paymentDropDownMen.text}", Toast.LENGTH_SHORT)
+            val myToast = Toast.makeText(context,"Added Successfully", Toast.LENGTH_SHORT)
                 myToast.show()
                 }
 

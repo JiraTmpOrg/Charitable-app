@@ -1,4 +1,4 @@
-package com.example.charitable.fragments
+package Control
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.example.charitable.R
-import com.example.charitable.database.DatabaseManager
+import Model.database.DatabaseManager
 import com.google.android.material.textfield.TextInputEditText
 
 class Addition : Fragment() {
@@ -30,10 +30,10 @@ class Addition : Fragment() {
         val description=requireView().findViewById<TextInputEditText>(R.id.description)
         val from = requireView().findViewById<TextInputEditText>(R.id.from)
         val to = requireView().findViewById<TextInputEditText>(R.id.to)
-        val db = DatabaseManager()
+        val db = DatabaseManager.db
         addActivity.setOnClickListener{
             db.addActivity(name.text.toString(),goal.text.toString(),duration.text.toString(),description.text.toString(),from.text.toString().toInt(),to.text.toString().toInt())
-            val myToast = Toast.makeText(context,"Added: ${name.text}:${goal.text}ph:${duration.text}am:${description.text}typ:${from.text},${to.text}", Toast.LENGTH_SHORT)
+            val myToast = Toast.makeText(context,"Added Successfully", Toast.LENGTH_SHORT)
             myToast.show()
         }
 
