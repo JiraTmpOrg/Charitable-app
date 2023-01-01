@@ -12,11 +12,10 @@
         android:backgroundTint="#71A13A"
         android:text="Donate"
         android:textSize="15sp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="627dp" />
 
@@ -25,9 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:text="DonerName:"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView3"
 
@@ -42,6 +41,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/donerName_donations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="write your name "
@@ -72,7 +72,7 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#3AC640"
         android:text="Email:"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
 
@@ -86,7 +86,7 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#3AC640"
         android:text="phone number:"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
 
@@ -100,7 +100,7 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#3AC640"
         android:text="Amount:"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
 
@@ -114,7 +114,7 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#3AC640"
         android:text="payment type:"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
 
@@ -128,6 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">>
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_donations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="write your Email "
@@ -145,6 +146,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">>
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_donations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="write your number"
@@ -162,6 +164,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6">>
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/amount_donations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="please enter amount "
@@ -172,17 +175,21 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="197dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7">>
 
-        <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/paymentMethods"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView7"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/paymemts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter payment type "
-            android:textSize="18dp"
-
+            android:inputType="none"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
