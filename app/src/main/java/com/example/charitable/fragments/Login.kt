@@ -19,7 +19,14 @@ class Login : Fragment() {
 
     lateinit var signIn: Button
     lateinit var signUp: Button
+     companion object {
+        var uid = 0
+    }
 
+public fun getLoginID():Int
+{
+    return 1
+}
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,22 +46,7 @@ class Login : Fragment() {
 
         val userName = requireView().findViewById<EditText>(R.id.nameField)
         val password = requireView().findViewById<EditText>(R.id.editTextTextPassword2)
-
-        val usersSharedPreferences =
-            requireContext().getSharedPreferences(
-                "com.example.charitable.users",
-                Context.MODE_PRIVATE
-            )
-        val adminsSharedPreferences =
-            requireContext().getSharedPreferences(
-                "com.example.charitable.admin",
-                Context.MODE_PRIVATE
-            )
-
-
-
-
-
+        
         signIn.setOnClickListener {
 
             //db.connect()
@@ -69,6 +61,7 @@ class Login : Fragment() {
                 myToast.show()}
             val pass = password.text.toString()
                 if (name!="Admin"&&db.checkName(name)) {
+                    uid=db.getID(name)
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(1))
                             addToBackStack(null)
@@ -76,6 +69,7 @@ class Login : Fragment() {
                         }
                     }
                 else if (db.checkName(name)) {
+                    //db.getID(name)
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(0))
                             addToBackStack(null)

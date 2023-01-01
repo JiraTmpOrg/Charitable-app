@@ -1,5 +1,7 @@
 package com.example.charitable.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.charitable.R
 
 class HomeScreen(acc:Int) : Fragment() {
@@ -21,6 +26,7 @@ class HomeScreen(acc:Int) : Fragment() {
     lateinit var participateT: TextView
     lateinit var establishmentT: TextView
     lateinit var callUsT: TextView
+    lateinit var imageSlider:ImageSlider
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +37,7 @@ class HomeScreen(acc:Int) : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         donate = view.findViewById<ImageView>(R.id.donateBtn)
         participate = view.findViewById<ImageView>(R.id.partBtn)
@@ -40,6 +47,14 @@ class HomeScreen(acc:Int) : Fragment() {
         participateT = view.findViewById(R.id.textView3)
         establishmentT = view.findViewById(R.id.textView4)
         callUsT = view.findViewById(R.id.textView5)
+        imageSlider=requireView().findViewById(R.id.imageSlider)
+        val imageList=ArrayList<SlideModel>()
+        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
+        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
+        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
+        imageList.add(SlideModel("https://www.afnci.org.eg/wp-content/uploads/2019/06/57.jpg"))
+        imageSlider.setImageList(imageList,ScaleTypes.FIT)
+
 
         if (currentUser == 0)
             initAdmin()
@@ -80,14 +95,21 @@ class HomeScreen(acc:Int) : Fragment() {
                 commit()
             }
         }
+        //callUs.setOnClickListener {
+        //    parentFragmentManager.beginTransaction().apply {
+        //        replace(R.id.flFragment, Receipt())
+        //        addToBackStack(null)
+        //        commit()
+        //    }
         callUs.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, Receipt())
+                replace(R.id.flFragment, AllDonation())
                 addToBackStack(null)
                 commit()
             }
         }
-    }
+        }
+
 
     fun initDoner() {
         donate.setImageResource(R.drawable.ic_baseline_attach_money_24)
@@ -97,7 +119,7 @@ class HomeScreen(acc:Int) : Fragment() {
 
         donate.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, Donation())
+                replace(R.id.flFragment,  Donation())
                 addToBackStack(null)
                 commit()
             }
@@ -115,6 +137,16 @@ class HomeScreen(acc:Int) : Fragment() {
                 addToBackStack(null)
                 commit()
             }
+
+        }
+        callUs.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode("01027126084")))
+            startActivity(intent)
+//            parentFragmentManager.beginTransaction().apply {
+//                replace(R.id.flFragment, UserDonation())
+//                addToBackStack(null)
+//                commit()
+//            }
         }
     }
 }
