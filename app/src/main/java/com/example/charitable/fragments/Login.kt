@@ -42,6 +42,7 @@ public fun getLoginID():Int
         val db=DatabaseManager()
         //DatabaseManager().connect()
         //DatabaseManager().c2()
+        println(R.color.black)
 
 
         val userName = requireView().findViewById<EditText>(R.id.nameField)
@@ -51,16 +52,16 @@ public fun getLoginID():Int
 
             //db.connect()
             val name = userName.text.toString()
-            if (db.checkName(name))
+            val pass=password.text.toString()
+            if (db.checkName(name,pass))
             {
                 val myToast = Toast.makeText(context,"User Found",Toast.LENGTH_SHORT)
                 myToast.show()
             }
             else
-            {val myToast = Toast.makeText(context,"User Nooot Found ${db.checkName(name)}",Toast.LENGTH_SHORT)
+            {val myToast = Toast.makeText(context,"User Nooot Found ${db.checkName(name,pass)}",Toast.LENGTH_SHORT)
                 myToast.show()}
-            val pass = password.text.toString()
-                if (name!="Admin"&&db.checkName(name)) {
+                if (name!="Admin"&&db.checkName(name,pass)) {
                     uid=db.getID(name)
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(1))
@@ -68,7 +69,7 @@ public fun getLoginID():Int
                             commit()
                         }
                     }
-                else if (db.checkName(name)) {
+                else if (db.checkName(name,pass)) {
                     //db.getID(name)
                         parentFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, HomeScreen(0))

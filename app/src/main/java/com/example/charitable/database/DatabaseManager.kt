@@ -44,8 +44,8 @@ class DatabaseManager {
         return "error1"
     }
 
-    fun insertName(str: String):Boolean {
-        if (checkName(str))
+    fun insertName(name: String,email:String,password:String):Boolean {
+        if (checkName(name,password))
         {
             return false
         }
@@ -60,13 +60,22 @@ class DatabaseManager {
                 )
                 val s =
                     c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
-                val r = s.executeQuery("SELECT `Name` ,`u_id` FROM `accounts` ORDER BY `u_id`")
+                val r = s.executeQuery("SELECT `Name` ,`Email` , `Password` , `userID` , `accountID` FROM `users` ORDER BY `userID`")
                 //Log.d("ay 7aga", "1-${str}")
-                r.last()
-                val x=r.getInt("u_id")+1
+                var x:Int
+                if(r.last())
+                {r.last()
+                    x=r.getInt("userId")+1}
+                else{
+                    x=1}
                 r.moveToInsertRow()
-                r.updateString("Name",str)
-                r.updateInt("u_id",x)
+                r.updateString("Name",name)
+                r.updateString("Email",email)
+                r.updateString("Password",password)
+                r.updateInt("userID",x)
+                r.updateInt("accountId",2)
+
+
                 r.insertRow()
             } catch (e: SQLException) {
                 e.printStackTrace()
@@ -156,7 +165,7 @@ class DatabaseManager {
         Thread.sleep(700)
         return true
     }
-    fun checkName(str: String):Boolean {
+    fun checkName(name: String,password: String):Boolean {
         var  flag=false
         val handler = Handler(Looper.getMainLooper())
         val executor: ExecutorService = Executors.newSingleThreadExecutor()
@@ -169,10 +178,10 @@ class DatabaseManager {
                 )
                 val s =
                     c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
-                val r = s.executeQuery("SELECT `Name` FROM `accounts` WHERE Name = \"${str}\"")
-                Log.d("ay 7aga", "1-${str}")
-                r.next()
-                if (r.isFirst)
+                val r = s.executeQuery("SELECT `Name` , `Password` FROM `users` WHERE Name = \"${name}\"")
+                Log.d("ay 7aga", "1-${name}")
+                while(r.next())
+                if (r.getString("Password")==password)
                 {
                     flag=true
                 }

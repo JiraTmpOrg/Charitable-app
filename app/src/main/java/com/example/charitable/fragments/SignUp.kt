@@ -31,29 +31,33 @@ class SignUp : Fragment() {
 
 
         val userName = requireView().findViewById<EditText>(R.id.nameField)
-        val password = requireView().findViewById<EditText>(R.id.editTextTextPassword2)
+        val password = requireView().findViewById<EditText>(R.id.password)
+        val confirmPassword=requireView().findViewById<EditText>(R.id.confirmPassword)
+        val email = requireView().findViewById<EditText>(R.id.email)
         val db= DatabaseManager()
-        val usersSharedPreferences =
-            requireContext().getSharedPreferences(
-                "com.example.charitable.users",
-                Context.MODE_PRIVATE
-            )
-        val adminsSharedPreferences =
-            requireContext().getSharedPreferences(
-                "com.example.charitable.admin",
-                Context.MODE_PRIVATE
-            )
+
 
         signUp.setOnClickListener {
             val name = userName.text.toString()
             val pass = password.text.toString()
-            if(db.insertName(name))
-            {val myToast = Toast.makeText(context,"User Added Successfully",Toast.LENGTH_SHORT)
-            myToast.show()}
+            val confirmPass=confirmPassword.text.toString()
+            if(pass!=confirmPass)
+            {
+                val myToast = Toast.makeText(context,"Password doesn't match",Toast.LENGTH_SHORT)
+                myToast.show()
+            }
             else
             {
-                val myToast = Toast.makeText(context,"User Already exists",Toast.LENGTH_SHORT)
-                myToast.show()
+                val Email= email.text.toString()
+                if(db.insertName(name,Email,pass))
+                {val myToast = Toast.makeText(context,"User Added Successfully",Toast.LENGTH_SHORT)
+                    myToast.show()}
+                else
+                {
+                    val myToast = Toast.makeText(context,"User Already exists",Toast.LENGTH_SHORT)
+                    myToast.show()
+                }
+
             }
 
 

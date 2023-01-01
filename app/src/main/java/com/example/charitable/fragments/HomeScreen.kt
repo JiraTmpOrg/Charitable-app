@@ -139,6 +139,7 @@ class HomeScreen(acc:Int) : Fragment() {
             }
 
         }
+
         callUs.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode("01027126084")))
             startActivity(intent)

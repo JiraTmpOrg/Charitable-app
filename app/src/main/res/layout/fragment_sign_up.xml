@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.236" />
     <EditText
         android:textSize="22dp"
-        android:id="@+id/nameField2"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -82,7 +82,7 @@
     <EditText
         android:textSize="22dp"
         android:backgroundTint="@color/black"
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -94,11 +94,11 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/nameField"
         app:layout_constraintStart_toStartOf="@+id/nameField"
-        app:layout_constraintTop_toBottomOf="@+id/nameField2" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
         android:backgroundTint="@color/black"
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/confirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -111,7 +111,7 @@
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="@+id/nameField"
         app:layout_constraintStart_toStartOf="@+id/nameField"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
         android:id="@+id/startButton"
@@ -123,7 +123,7 @@
         android:text="Signup"
         android:textSize="20dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

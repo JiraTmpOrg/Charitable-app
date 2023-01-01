@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeScreen">
 
+
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="339dp"
@@ -17,32 +19,25 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_baseline_directions_run_24" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prev"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+    <com.denzcoskun.imageslider.ImageSlider
+        android:layout_width="339dp"
+        android:layout_height="254dp"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        android:id="@+id/imageSlider"
+        app:iss_auto_cycle="true"
+        app:iss_corner_radius="5"
+        app:iss_selected_dot="@drawable/default_selected_dot"
+        app:iss_unselected_dot="@drawable/default_unselected_dot"
+        app:iss_period="1000"
+        />
 
     <ImageView
         android:id="@+id/donateBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         android:src="@drawable/ic_baseline_attach_money_24" />
@@ -51,7 +46,7 @@
         android:id="@+id/partBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -62,20 +57,22 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/ic_baseline_house_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donateBtn"
-        android:src="@drawable/ic_baseline_house_24" />
+        app:layout_constraintTop_toBottomOf="@+id/donateBtn" />
 
     <ImageView
         android:id="@+id/callBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="52dp"
+        android:src="@drawable/ic_baseline_local_phone_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/partBtn"
-        android:src="@drawable/ic_baseline_local_phone_24" />
+        app:layout_constraintTop_toBottomOf="@+id/partBtn" />
 
     <TextView
         android:id="@+id/textView2"
